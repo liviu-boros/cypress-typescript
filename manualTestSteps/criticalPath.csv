@@ -1,0 +1,96 @@
+,,
+,{{URL}},https://m.aboutyou.com
+,{{Category}},Clothing | Clothes
+,{{SubCategory}},Jackets
+,{{ItemId}},9183980
+,{{ItemBrand}},Pacemaker | PacemakerLogo
+,{{ItemPrice}},$ 145.90
+,{{Size}},M
+,,
+Action,Data,Expected behaviour
+Open app,{{URL}},
+Assert Header,top Header bar,"should contain (left to right):
+- hamburger menu icon > left aligned > state: active
+- brand logo > left aligned > state: active
+- Search icon > right aligned > state: active
+- Favourites > right aligned > state: active > badge: not displayed
+- Basket > right aligned > state: active > badge: not displayed"
+Assert Welcome section,below Header bar,"should contain (top to bottom):
+- image
+- story description > two lines
+- Go to story button > state: active"
+Assert Category tabs,below Welcome section,"should contain (left to right):
+- Women > state: selected
+- Men > state: active
+- Kids > state: active"
+Assert Category grid list,below Category tabs,"should contain (left to right, top to bottom) > imageAll > stateAll: active:
+- Clothing
+- Shoes
+- Sportswear
+- Accesories
+- Premium
+- SALE
+- Top 100"
+Select a Category,{{Category}},performed correctly
+Assert Navbar,left side Navbar,"should contain (left to right, top to bottom):
+- < icon > state: active
+- {{Category}} > header label
+- list rows (top to bottom) > format: image - text - > :
+  - Show All > image: greyed out total number
+  - New > image: accentuated total number
+  - SubCategories"
+Select SubCategory,{{SubCategory}},performed correctly
+Assert page navigation,ItemsList page,performed correctly
+Assert Items grid list,below Header bar,"should contain (left to right, top to bottom):
+- < icon > state: active
+- {{SubCategory}} > header label
+- Filter icon > state: active, badge: not displayed
+- quick filter segmented list
+- items grid list (left to right, top to bottom)"
+Assert Items grid list format,each item,"- bakckground image
+(left to right, top to bottom):
+- Info icon
+- Favourite icon > state: active
+- Tags
+- Brand > textStyle: AllCaps
+- Discounted price (if discount) > textColor: red
+- Regular Price (if discount) > textStyle: strikethrough
+- Color pills"
+Select Item,"{{ItemId}}
+{{ItemBrand}}
+{{ItemPrice}}",performed correctly
+Assert page navigation,ItemDetails page,performed correctly
+Assert item details,top section,"image section (top to bottom):
+- Favourite icon > state: active
+- Tags
+- Add to basket icon > state: active
+- Favourite icon > state: active"
+Assert item details,price and brand section,"price and brand section (left to right):
+- {{ItemPrice}}
+- {{ItemBrand}}"
+Assert item details,Add to basket section,"Add to basket section (left to right):
+- Select size dropdown > state: active
+- Add to basket button > state: active"
+Select Add to Basket,Add to basket button,performed correctly
+Select Size,{{Size}},performed correctly
+Assert Flyout,bottom flyout,"succesful message:
+✓ Successfully added to your cart!
+button section:
+- Continue shopping button > state: active
+- Go to basket > state: active"
+Select Go to Basket,Go to Basket button,performed correctly
+Assert page navigation,Basket page,performed correctly
+Assert Header,top Header bar,- Basket > badge: 1
+Assert Basket summary,top section,Basket - {{ItemPrice}}
+Assert Item list,item list format,"left side:
+image - Favourite icon
+right side:
+{{ItemBrand}}
+ItemName
+{{Size}}
+Color
+{{ItemPrice}}"
+Assert Totals section,Totals section,"In total included VAT - {{ItemPrice}}
+Proceed to checkout button"
+Select Proceed to checkout,Proceed to checkout button,performed correctly
+,,
