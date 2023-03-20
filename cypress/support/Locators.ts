@@ -12,4 +12,14 @@ export const Locators = {
     cart: '[data-test="nav-cart"]',
     cartQuantity: '[data-test="cart-quantity"]',
   },
+
+  ProductsGrid: {
+    allContainers: "a.card",
+    container: '[data-test="replaceWithID"]',
+    image: "img",
+    name: '[data-test="product-name"]',
+    price: '[data-test="product-price"]',
+    previousPage: ".pagination-previous > a",
+    nextPage: ".pagination-next > a",
+  },
 }
