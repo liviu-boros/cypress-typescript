@@ -13,6 +13,37 @@ export const Locators = {
     cartQuantity: '[data-test="cart-quantity"]',
   },
 
+  Filters: {
+    sort: '[data-test="sort"]',
+
+    PriceSlider: {
+      container: ".ngx-slider.animate",
+      minPointer: ".ngx-slider-pointer-min",
+      maxPointer: ".ngx-slider-pointer-max",
+    },
+
+    searchField: '[data-test="search-query"]',
+    searchReset: '[data-test="search-reset"]',
+    searchSubmit: '[data-test="search-submit"]',
+
+    Category: {
+      hammer: '[data-test="category-3"]',
+      handSaw: '[data-test="category-4"]',
+      wrench: '[data-test="category-5"]',
+      screwdriver: '[data-test="category-6"]',
+      pliers: '[data-test="category-7"]',
+      grinder: '[data-test="category-8"]',
+      sander: '[data-test="category-9"]',
+      saw: '[data-test="category-10"]',
+      drill: '[data-test="category-11"]',
+    },
+
+    Brand: {
+      brandName1: '[data-test="brand-1"]',
+      brandName2: '[data-test="brand-2"]',
+    },
+  },
+
   ProductsGrid: {
     allContainers: "a.card",
     container: '[data-test="replaceWithID"]',

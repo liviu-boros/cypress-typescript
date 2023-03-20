@@ -1,4 +1,10 @@
 export const Data = {
+  SortOptions: {
+    aToZ: "Name (A - Z)",
+    zToA: "Name (Z - A)",
+    HighToLow: "Price (High - Low)",
+    lowToHigh: "Price (Low - High)",
+  },
   productsPerPage: 9,
   Categories: [
     {
