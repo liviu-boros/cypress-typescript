@@ -69,4 +69,15 @@ export const Locators = {
     previousPage: ".pagination-previous > a",
     nextPage: ".pagination-next > a",
   },
+
+  Cart: {
+    row: "tr",
+    nameCell: ".product-title",
+    quantityCell: ".quantity",
+    priceCell: "td:nth-of-type(4)",
+    totalCell: "td:nth-of-type(5)",
+    removeItem: "td:nth-of-type(6) a",
+    totalCart: "tfoot td:nth-of-type(5)",
+    proceedToCheckout: "",
+  },
 }

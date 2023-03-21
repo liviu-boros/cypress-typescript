@@ -1,7 +1,7 @@
 import { Data } from "../../support/Data"
 import ProductsGrid from "../../components/ProductsGrid"
 import ProductDetails from "../../components/ProductDetails"
-import { paginateProducts, randomizeProduct } from "../../support/Utils"
+import { paginateProducts, selectRandom } from "../../support/Utils"
 import Header from "../../components/Header"
 
 describe("Product Details", () => {
@@ -52,9 +52,9 @@ describe("Product Details", () => {
 
   it.only("3 Random products details are displayed as expected", () => {
     const firstPageProducts = paginateProducts(Data.Products, 1)
-    const randomProduct1 = randomizeProduct(firstPageProducts)
-    const randomProduct2 = randomizeProduct(firstPageProducts)
-    const randomProduct3 = randomizeProduct(firstPageProducts)
+    const randomProduct1 = selectRandom(firstPageProducts)
+    const randomProduct2 = selectRandom(firstPageProducts)
+    const randomProduct3 = selectRandom(firstPageProducts)
 
     //
     // verify first random product details

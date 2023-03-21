@@ -6,7 +6,7 @@ export const sortAlphabetically = (a: string, b: string): number => {
   return 0
 }
 
-export const randomizeProduct = (products) => {
+export const selectRandom = (products) => {
   const randomIndex = Math.floor(Math.random() * products.length)
   return products[randomIndex]
 }
