@@ -44,6 +44,22 @@ export const Locators = {
     },
   },
 
+  ProductDetails: {
+    image: ".figure-img",
+    name: '[data-test="product-name"]',
+    pill: ".badge.rounded-pill",
+    price: '[data-test="unit-price"]',
+
+    Quantity: {
+      decrement: '[data-test="decrease-quantity"]',
+      field: '[data-test="quantity"]',
+      increment: '[data-test="increase-quantity"]',
+    },
+
+    addToCart: '[data-test="add-to-cart"]',
+    addToFavorites: '[data-test="add-to-favorites"]',
+  },
+
   ProductsGrid: {
     allContainers: "a.card",
     container: '[data-test="replaceWithID"]',
