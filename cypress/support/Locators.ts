@@ -44,6 +44,16 @@ export const Locators = {
     },
   },
 
+  ProductsGrid: {
+    allContainers: "a.card",
+    container: '[data-test="replaceWithID"]',
+    image: "img",
+    name: '[data-test="product-name"]',
+    price: '[data-test="product-price"]',
+    previousPage: ".pagination-previous > a",
+    nextPage: ".pagination-next > a",
+  },
+
   ProductDetails: {
     image: ".figure-img",
     name: '[data-test="product-name"]',
@@ -58,16 +68,6 @@ export const Locators = {
 
     addToCart: '[data-test="add-to-cart"]',
     addToFavorites: '[data-test="add-to-favorites"]',
-  },
-
-  ProductsGrid: {
-    allContainers: "a.card",
-    container: '[data-test="replaceWithID"]',
-    image: "img",
-    name: '[data-test="product-name"]',
-    price: '[data-test="product-price"]',
-    previousPage: ".pagination-previous > a",
-    nextPage: ".pagination-next > a",
   },
 
   Cart: {

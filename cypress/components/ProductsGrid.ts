@@ -7,7 +7,7 @@ class ProductsGrid {
     return cy.get(Locators.ProductsGrid.allContainers)
   }
 
-  public productCard(id: string): this {
+  public productCard(id: number): this {
     this._anchor = cy
       .get(
         Locators.ProductsGrid.container.replace(
@@ -41,7 +41,7 @@ class ProductsGrid {
 
   // facades
   public verifyProductFacade(
-    id: string,
+    id: number,
     image: string,
     name: string,
     price: number
@@ -49,7 +49,7 @@ class ProductsGrid {
     this.productCard(id)
       .productImage()
       .should("be.visible")
-      .should("have.attr", "src", image)
+      .should("have.attr", "src", `assets/img/products/${image}`)
 
     this.productCard(id)
       .productName()

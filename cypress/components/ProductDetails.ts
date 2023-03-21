@@ -45,7 +45,9 @@ class ProductsDetails {
     brandName: string,
     price: number
   ): void {
-    this.image().should("be.visible").should("have.attr", "src", image)
+    this.image()
+      .should("be.visible")
+      .should("have.attr", "src", `assets/img/products/${image}`)
 
     this.name().should("be.visible").should("contain.text", name)
 
