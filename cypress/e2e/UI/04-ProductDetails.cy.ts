@@ -21,7 +21,7 @@ describe("Product Details", () => {
     // ! abstracted in ProductDetails.verifyProductDetailsFacade
     ProductDetails.image()
       .should("be.visible")
-      .should("have.attr", "src", image)
+      .should("have.attr", "src", `assets/img/products/${image}`)
 
     ProductDetails.name().should("be.visible").should("contain.text", name)
 

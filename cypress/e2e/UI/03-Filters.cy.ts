@@ -3,7 +3,7 @@ import Filters from "../../components/Filters"
 import ProductsGrid from "../../components/ProductsGrid"
 import {
   sortAlphabetically,
-  randomizeProduct,
+  selectRandom,
   paginateProducts,
   filterProductsByCategory,
 } from "../../support/Utils"
@@ -185,7 +185,7 @@ describe("Filters", () => {
 
   it("Searching for a random product works as expected", () => {
     // select a random product
-    const randomProduct = randomizeProduct(Data.Products)
+    const randomProduct = selectRandom(Data.Products)
 
     Filters.searchField().clear().type(randomProduct.name)
     Filters.searchSubmit().click()

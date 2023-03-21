@@ -35,3 +35,22 @@
 //     }
 //   }
 // }
+
+declare namespace Cypress {
+  interface Chainable {
+    /**
+     * Custom command for abstracting cy.request().
+     *
+     * @param {string} url - The URL to send the GET request to.
+     * @returns {Cypress.Chainable<Cypress.Response<any>>} A chainable Cypress object containing the response data.
+     */
+    GET(url: string): Cypress.Chainable<Cypress.Response<any>>
+  }
+}
+
+Cypress.Commands.add("GET", (url) => {
+  return cy.request({
+    method: "GET",
+    url: url,
+  })
+})
