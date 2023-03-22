@@ -1,0 +1,16 @@
+{
+   "current_page": 1,
+   "data": [
+     
+   ],
+   "first_page_url": "https://api-v4.practicesoftwaretesting.com/products?page=1",
+   "from": 1,
+   "last_page": 3,
+   "last_page_url": "https://api-v4.practicesoftwaretesting.com/products?page=3",
+   "next_page_url": "https://api-v4.practicesoftwaretesting.com/products?page=2",
+   "path": "https://api-v4.practicesoftwaretesting.com/products",
+   "per_page": 9,
+   "prev_page_url": null,
+   "to": 9,
+   "total": 26
+ }

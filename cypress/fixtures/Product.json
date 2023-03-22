@@ -1,0 +1,30 @@
+{
+  "id":1,
+  "name":"Stubbed Description",
+  "description":"Stubbed Description",
+  "price":999.99,
+  "is_rental":0,
+  "brand_id":1,
+  "category_id":7,
+  "product_image_id":1,
+  "product_image":{
+     "id":1,
+     "by_name":"Stubbed Name",
+     "by_url":"https://unsplash.com/@fantin",
+     "source_name":"Stubbed Source",
+     "source_url":"https://unsplash.com/photos/W8BNwvOvW4M",
+     "file_name":"pliers01.jpeg",
+     "title":"Combination pliers"
+  },
+  "category":{
+     "id":7,
+     "parent_id":1,
+     "name":"Stubbed Category",
+     "slug":"pliers"
+  },
+  "brand":{
+     "id":1,
+     "name":"Stubbed Brand",
+     "slug":"brand-name-1"
+  }
+}
