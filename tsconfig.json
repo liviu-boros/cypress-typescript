@@ -1,8 +1,16 @@
 {
   "compilerOptions": {
+    "baseUrl": ".",
     "target": "es5",
     "lib": ["es5", "dom"],
-    "types": ["cypress", "node"]
+    "types": ["cypress", "node"],
+    "paths": {
+      "@components/*": ["cypress/components/*"],
+      "@data": ["cypress/support/Data.ts"],
+      "@locators": ["cypress/support/Locators.ts"],
+      "@utilies": ["cypress/support/Utils.ts"],
+      "@HelperCart": ["cypress/support/HelperCart.ts"],
+    },
   },
   "include": ["**/*.ts"]
 }
