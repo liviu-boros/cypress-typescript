@@ -1,6 +1,9 @@
 import { defineConfig } from "cypress"
 
 export default defineConfig({
+  env: {
+    baseAPI: "https://api-v4.practicesoftwaretesting.com",
+  },
   e2e: {
     baseUrl: "https://v4.practicesoftwaretesting.com",
     viewportWidth: 1000,
