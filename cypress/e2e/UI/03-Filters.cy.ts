@@ -1,14 +1,15 @@
-import { Data } from "../../support/Data"
-import Filters from "../../components/Filters"
-import ProductsGrid from "../../components/ProductsGrid"
+import { Data } from "@data"
+import Filters from "@components/Filters"
+import ProductsGrid from "@components/ProductsGrid"
 import {
   sortAlphabetically,
   selectRandom,
   paginateProducts,
   filterProductsByCategory,
-} from "../../support/Utils"
+} from "@utilies"
 
 describe("Filters", () => {
+  // visit home page
   beforeEach(() => {
     cy.visit("/")
   })
@@ -104,17 +105,18 @@ describe("Filters", () => {
   })
 
   it("Sorting by name works as expected", () => {
-    const Products = [...Data.Products]
+    // create a new list from pre-defined list of products
+    const products = [...Data.Products]
     let sortedProducts = []
     let firstPageProducts = []
 
-    //
-    // sort products A>Z and limit to first page
+    // select sort A > Z
+    // sort products list and filter to first page
     Filters.sort().select(Data.SortOptions.aToZ)
-    sortedProducts = Products.sort((a, b) => sortAlphabetically(a.name, b.name))
+    sortedProducts = products.sort((a, b) => sortAlphabetically(a.name, b.name))
     firstPageProducts = paginateProducts(sortedProducts, 1)
 
-    // verify products are displayed in the same order
+    // verify products order
     for (let index = 0; index < firstPageProducts.length; index++) {
       ProductsGrid.allCards()
         .eq(index)
@@ -125,13 +127,13 @@ describe("Filters", () => {
         )
     }
 
-    //
-    // sort products Z>A and limit to first page
+    // select sort Z > A
+    // sort products list and filter to first page
     Filters.sort().select(Data.SortOptions.zToA)
-    sortedProducts.sort((a, b) => sortAlphabetically(b.name, a.name))
+    sortedProducts = products.sort((a, b) => sortAlphabetically(b.name, a.name))
     firstPageProducts = paginateProducts(sortedProducts, 1)
 
-    // verify products are displayed in the same order
+    // verify products order
     for (let index = 0; index < firstPageProducts.length; index++) {
       ProductsGrid.allCards()
         .eq(index)
@@ -144,17 +146,18 @@ describe("Filters", () => {
   })
 
   it("Sorting by price works as expected", () => {
-    let Products = [...Data.Products]
+    // create a new list from pre-defined list of products
+    const products = [...Data.Products]
     let sortedProducts = []
     let firstPageProducts = []
 
-    //
-    // sort products LOW > HIGH and limit to first page
+    // select sort LOW > HIGH
+    // sort products list and filter to first page
     Filters.sort().select(Data.SortOptions.lowToHigh)
-    sortedProducts = Products.sort((a, b) => a.price - b.price)
+    sortedProducts = products.sort((a, b) => a.price - b.price)
     firstPageProducts = paginateProducts(sortedProducts, 1)
 
-    // verify products are displayed in the same order
+    // verify products order
     for (let index = 0; index < firstPageProducts.length; index++) {
       ProductsGrid.allCards()
         .eq(index)
@@ -165,13 +168,13 @@ describe("Filters", () => {
         )
     }
 
-    //
-    // sort products HIGH > LOW and limit to first page
+    // select sort HIGH > LOW
+    // sort products list and filter to first page
     Filters.sort().select(Data.SortOptions.HighToLow)
-    sortedProducts = Products.sort((a, b) => b.price - a.price)
+    sortedProducts = products.sort((a, b) => b.price - a.price)
     firstPageProducts = paginateProducts(sortedProducts, 1)
 
-    // verify products are displayed in the same order
+    // verify products order
     for (let index = 0; index < firstPageProducts.length; index++) {
       ProductsGrid.allCards()
         .eq(index)
@@ -184,53 +187,76 @@ describe("Filters", () => {
   })
 
   it("Searching for a random product works as expected", () => {
-    // select a random product
+    // select a random product from pre-defined list of products
     const randomProduct = selectRandom(Data.Products)
 
+    // search for product by name
     Filters.searchField().clear().type(randomProduct.name)
     Filters.searchSubmit().click()
 
+    // verify product card
     const { id, image, name, price } = randomProduct
     ProductsGrid.verifyProductFacade(id, image, name, price)
   })
 
   it("Category - Hand Tools filters work as expected", () => {
+    const products = [...Data.Products]
     let filteredProducts = []
 
+    // tick Hammer filter
+    // filter products
     Filters.categoryHammer().click()
-    filteredProducts = filterProductsByCategory(Data.Products, "Hammer")
+    filteredProducts = filterProductsByCategory(products, "Hammer")
+
+    // verify products grid
     for (let product of filteredProducts) {
       const { id, image, name, price } = product
       ProductsGrid.verifyProductFacade(id, image, name, price)
     }
     Filters.categoryHammer().click()
 
+    // tick HandSaw filter
+    // filter products
     Filters.categoryHandSaw().click()
-    filteredProducts = filterProductsByCategory(Data.Products, "Hand Saw")
+    filteredProducts = filterProductsByCategory(products, "Hand Saw")
+
+    // verify products grid
     for (let product of filteredProducts) {
       const { id, image, name, price } = product
       ProductsGrid.verifyProductFacade(id, image, name, price)
     }
     Filters.categoryHandSaw().click()
 
+    // tick Wrench filter
+    // filter products
     Filters.categoryWrench().click()
-    filteredProducts = filterProductsByCategory(Data.Products, "Wrench")
+    filteredProducts = filterProductsByCategory(products, "Wrench")
+
+    // verify products grid
     for (let product of filteredProducts) {
       const { id, image, name, price } = product
       ProductsGrid.verifyProductFacade(id, image, name, price)
     }
     Filters.categoryWrench().click()
 
+    // tick Screwdriver filter
+    // filter products
     Filters.categoryScrewdriver().click()
-    filteredProducts = filterProductsByCategory(Data.Products, "Screwdriver")
+    filteredProducts = filterProductsByCategory(products, "Screwdriver")
+
+    // verify products grid
     for (let product of filteredProducts) {
       const { id, image, name, price } = product
       ProductsGrid.verifyProductFacade(id, image, name, price)
     }
     Filters.categoryScrewdriver().click()
 
+    // tick Pliers filter
+    // filter products
     Filters.categoryPliers().click()
-    filteredProducts = filterProductsByCategory(Data.Products, "Pliers")
+    filteredProducts = filterProductsByCategory(products, "Pliers")
+
+    // verify products grid
     for (let product of filteredProducts) {
       const { id, image, name, price } = product
       ProductsGrid.verifyProductFacade(id, image, name, price)
@@ -238,34 +264,50 @@ describe("Filters", () => {
   })
 
   it("Category - Power Tools filters work as expected", () => {
+    const products = [...Data.Products]
     let filteredProducts = []
 
+    // tick Grinder filter
+    // filter products
     Filters.categoryGrinder().click()
-    filteredProducts = filterProductsByCategory(Data.Products, "Grinder")
+    filteredProducts = filterProductsByCategory(products, "Grinder")
+
+    // verify products grid
     for (let product of filteredProducts) {
       const { id, image, name, price } = product
       ProductsGrid.verifyProductFacade(id, image, name, price)
     }
     Filters.categoryGrinder().click()
 
+    // tick Grinder filter
+    // filter products
     Filters.categorySander().click()
-    filteredProducts = filterProductsByCategory(Data.Products, "Sander")
+    filteredProducts = filterProductsByCategory(products, "Sander")
+
+    // verify products grid
     for (let product of filteredProducts) {
       const { id, image, name, price } = product
       ProductsGrid.verifyProductFacade(id, image, name, price)
     }
     Filters.categorySander().click()
 
+    // tick Grinder filter
+    // filter products
     Filters.categorySaw().click()
-    filteredProducts = filterProductsByCategory(Data.Products, "Saw")
+    filteredProducts = filterProductsByCategory(products, "Saw")
+    // verify products grid
     for (let product of filteredProducts) {
       const { id, image, name, price } = product
       ProductsGrid.verifyProductFacade(id, image, name, price)
     }
     Filters.categorySaw().click()
 
+    // tick Grinder filter
+    // filter products
     Filters.categoryDrill().click()
-    filteredProducts = filterProductsByCategory(Data.Products, "Drill")
+    filteredProducts = filterProductsByCategory(products, "Drill")
+
+    // verify products grid
     for (let product of filteredProducts) {
       const { id, image, name, price } = product
       ProductsGrid.verifyProductFacade(id, image, name, price)
@@ -274,18 +316,23 @@ describe("Filters", () => {
   })
 
   it("Category - Brand filters work as expected", () => {
-    // all products are Brand name 1
-    let firstPageProducts = []
-    firstPageProducts = paginateProducts(Data.Products, 1)
+    const firstPageProducts = paginateProducts(Data.Products, 1)
 
+    // tick Brand name 1 filter
     Filters.brandName1().click()
+
+    // verify products grid
     for (let product of firstPageProducts) {
       const { id, image, name, price } = product
       ProductsGrid.verifyProductFacade(id, image, name, price)
     }
     Filters.brandName1().click()
 
+    // tick Brand name 2 filter
     Filters.brandName2().click()
+
+    // no product is brand name 1
+    // verify products grid is empty
     ProductsGrid.allCards().should("not.exist")
   })
 })
