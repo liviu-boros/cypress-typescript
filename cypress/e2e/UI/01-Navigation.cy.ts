@@ -1,4 +1,4 @@
-import Header from "../../components/Header"
+import Header from "@components/Header"
 
 describe("Navigation", () => {
   beforeEach(() => {
@@ -32,6 +32,8 @@ describe("Navigation", () => {
   })
 
   it("Header items should navigate to the correct links", () => {
+    cy.url().should("contain", "#/")
+
     Header.categories().click()
     Header.handTools().click()
     cy.url().should("contain", "/category/hand-tools")
