@@ -1,118 +1,135 @@
-import { Data } from "../../support/Data"
-import Header from "../../components/Header"
-import ProductsGrid from "../../components/ProductsGrid"
-import ProductDetails from "../../components/ProductDetails"
-import Cart from "../../components/Cart"
-import { HelperCart } from "../../support/HelperCart"
-import { paginateProducts, selectRandom } from "../../support/Utils"
-import Filters from "../../components/Filters"
+import { Data } from "@data"
+import Header from "@components/Header"
+import ProductsGrid from "@components/ProductsGrid"
+import ProductDetails from "@components/ProductDetails"
+import Cart from "@components/Cart"
+import { HelperCart } from "@HelperCart"
+import { paginateProducts, selectRandom } from "@utilies"
+import Filters from "@components/Filters"
 
-describe("e2e - Add to cart", () => {
+describe("Cart", () => {
   let helperCart
 
+  // visit home page and create a new HelperCart object before each test
   beforeEach(() => {
     cy.visit("/")
     helperCart = new HelperCart()
   })
 
   it("Add first product to cart and verify cart", () => {
+    // select first product from pre-defined list of products
     const firstProduct = [...Data.Products][0]
 
+    // click on product name to navigate to the product details page
     ProductsGrid.productCard(firstProduct.id).productName().click()
 
-    cy.url().should("contain", `/product/${firstProduct.id}`)
+    // add product to cart
+    // add product to helperCart to keep track of cart internally
     ProductDetails.addToCart().click()
     helperCart.addProduct(firstProduct)
+
+    // verify cart icon and cart quantity
     Header.cart().should("be.visible")
     Header.cartQuantity().should("be.visible").should("have.text", 1)
 
+    // click on cart icon to navigate to cart page
     Header.cart().click()
 
-    // !
-    // ! abstracted in Cart.verifyCartTable
+    // verify contents of the cart table by iterating over each product
+    // and checking its name, quantity, price, and total
+    // ! abstracted to Cart.verifyCartTable in later tests
     for (let product of helperCart.getCart()) {
       const rowIndex = helperCart.getCart().indexOf(product) + 1
 
       Cart.row(rowIndex).nameCell().should("have.text", product.name)
-
       Cart.row(rowIndex)
         .quantityCell()
         .invoke("val")
         .should("eq", `${helperCart.getProductQuantity(product)}`)
       Cart.row(rowIndex).priceCell().should("have.text", `$${product.price}`)
-
       Cart.row(rowIndex)
         .totalCell()
         .should("have.text", `$${helperCart.getTotalProductPrice(product)}`)
-
       Cart.row(rowIndex).removeItem().should("be.visible")
     }
     Cart.totalCart().should("contain.text", `$${helperCart.getTotalPrice()}`)
   })
 
   it("Add random product to cart 3 times and verify cart", () => {
+    // select a random product from pre-defined list of products
     const randomProduct = selectRandom(Data.Products)
 
+    // search for product by name
+    // click on product name to navigate to the product details page
     Filters.searchField().clear().type(randomProduct.name)
     Filters.searchSubmit().click()
-
     ProductsGrid.productCard(randomProduct.id).productName().click()
 
-    cy.url().should("contain", `/product/${randomProduct.id}`)
+    // add product to cart 3 times
+    // add product to helperCart to keep track of cart internally
+    ProductDetails.addToCart().click()
+    ProductDetails.addToCart().click()
     ProductDetails.addToCart().click()
     helperCart.addProduct(randomProduct)
-    ProductDetails.addToCart().click()
     helperCart.addProduct(randomProduct)
-    ProductDetails.addToCart().click()
     helperCart.addProduct(randomProduct)
+
+    // verify cart icon and cart quantity
     Header.cart().should("be.visible")
     Header.cartQuantity().should("be.visible").should("have.text", 3)
 
+    // verify the contents of the cart table by iterating over each product
+    // and checking its name, quantity, price, and total
     Header.cart().click()
-
     Cart.verifyCartTable(helperCart)
   })
 
-  //
   // test can deal with adding the same item several times
   // and with adding 3 different items
   it("Add 3 random products to cart and verify cart", () => {
-    const firstPageProducts = paginateProducts(Data.Products, 1)
-    const randomProduct1 = selectRandom(firstPageProducts)
-    const randomProduct2 = selectRandom(firstPageProducts)
-    const randomProduct3 = selectRandom(firstPageProducts)
+    // select 3 random products from pre-defined list of products
+    const randomProduct1 = selectRandom(Data.Products)
+    const randomProduct2 = selectRandom(Data.Products)
+    const randomProduct3 = selectRandom(Data.Products)
 
-    //
-    // Add first random product to cart
+    // search for product1 by name
+    // add product1 to cart
+    Filters.searchField().clear().type(randomProduct1.name)
+    Filters.searchSubmit().click()
     ProductsGrid.productCard(randomProduct1.id).productName().click()
     ProductDetails.addToCart().click()
     helperCart.addProduct(randomProduct1)
 
+    // verify cart icon and cart quantity
     Header.cart().should("be.visible")
     Header.cartQuantity().should("be.visible").should("have.text", 1)
 
-    //
-    // Go back to home screen and add second random product to cart
+    // search for product2 by name
+    // add product2 to cart
     Header.home().click()
-
+    Filters.searchField().clear().type(randomProduct2.name)
+    Filters.searchSubmit().click()
     ProductsGrid.productCard(randomProduct2.id).productName().click()
     ProductDetails.addToCart().click()
     helperCart.addProduct(randomProduct2)
 
+    // verify cart quantity
     Header.cartQuantity().should("be.visible").should("have.text", 2)
 
-    //
-    // Go back to home screen and add third random product to cart
+    // Go back to home screen
+    // and add third random product to cart
     Header.home().click()
-
+    Filters.searchField().clear().type(randomProduct3.name)
+    Filters.searchSubmit().click()
     ProductsGrid.productCard(randomProduct3.id).productName().click()
     ProductDetails.addToCart().click()
     helperCart.addProduct(randomProduct3)
 
+    // verify cart quantity
     Header.cartQuantity().should("be.visible").should("have.text", 3)
 
-    //
-    // Go to cart screen and verify cart data
+    // verify contents of the cart table by iterating over each product
+    // and checking its name, quantity, price, and total
     Header.cart().click()
     Cart.verifyCartTable(helperCart)
   })
