@@ -6,18 +6,23 @@ export const sortAlphabetically = (a: string, b: string): number => {
   return 0
 }
 
-export const selectRandom = (products) => {
+export const selectRandom = <T>(products: T[]): T => {
   const randomIndex = Math.floor(Math.random() * products.length)
   return products[randomIndex]
 }
 
-export const paginateProducts = (products, pageIndex) => {
+export const paginateProducts = <T>(products: T[], pageIndex: number): T[] => {
   const itemsPerPage = Data.productsPerPage
   const start = (pageIndex - 1) * itemsPerPage
   const end = start + itemsPerPage
   return products.slice(start, end)
 }
 
-export const filterProductsByCategory = (products, filterBy) => {
+export const filterProductsByCategory = <
+  T extends { category: { name: string } }
+>(
+  products: T[],
+  filterBy: string
+): T[] => {
   return products.filter((el) => el.category.name === filterBy)
 }
