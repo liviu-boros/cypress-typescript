@@ -1,4 +1,4 @@
-import { Data } from "./Data"
+import { Data } from "@data"
 
 export const sortAlphabetically = (a: string, b: string): number => {
   if (a < b) return -1

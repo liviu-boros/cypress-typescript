@@ -1,5 +1,5 @@
-import ProductDetails from "../../components/ProductDetails"
-import ProductsGrid from "../../components/ProductsGrid"
+import ProductDetails from "@components/ProductDetails"
+import ProductsGrid from "@components/ProductsGrid"
 
 describe("Products stubs", () => {
   beforeEach(() => {})
