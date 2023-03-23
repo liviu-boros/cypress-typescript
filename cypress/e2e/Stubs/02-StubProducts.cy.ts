@@ -1,4 +1,4 @@
-import ProductsGrid from "../../components/ProductsGrid"
+import ProductsGrid from "@components/ProductsGrid"
 
 describe("Products stubs", () => {
   beforeEach(() => {})
@@ -10,7 +10,7 @@ describe("Products stubs", () => {
     ProductsGrid.allCards().should("not.exist")
   })
 
-  it("Stub Products list of 3 items and verify UI", () => {
+  it("Stub Products list with different products and verify UI", () => {
     cy.intercept("GET", `/products?page=1`, { fixture: "ProductsPage1.json" })
 
     cy.visit("/")

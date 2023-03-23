@@ -1,5 +1,5 @@
-import { Data } from "../../support/Data"
-import { paginateProducts, selectRandom } from "../../support/Utils"
+import { Data } from "@data"
+import { paginateProducts, selectRandom } from "@utilies"
 const apiUrl = Cypress.env("baseAPI")
 
 describe("GET Products", () => {
