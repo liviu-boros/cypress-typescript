@@ -33,6 +33,10 @@ class Cart {
     return cy.get(Locators.Cart.totalCart)
   }
 
+  public proceedToCheckout(): Cypress.Chainable {
+    return cy.get(Locators.Cart.proceedToCheckout)
+  }
+
   public verifyCartTable(helperCart: HelperCart): void {
     for (let product of helperCart.getCart()) {
       const rowIndex = helperCart.getCart().indexOf(product) + 1
@@ -42,7 +46,9 @@ class Cart {
         .quantityCell()
         .invoke("val")
         .should("eq", `${helperCart.getProductQuantity(product)}`)
-      this.row(rowIndex).priceCell().should("have.text", `$${product.price}`)
+      this.row(rowIndex)
+        .priceCell()
+        .should("have.text", `$${product.price.toFixed(2)}`)
       this.row(rowIndex)
         .totalCell()
         .should("have.text", `$${helperCart.getTotalProductPrice(product)}`)

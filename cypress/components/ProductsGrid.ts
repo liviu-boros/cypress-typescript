@@ -16,6 +16,7 @@ class ProductsGrid {
         )
       )
       .should("exist")
+      .should("be.visible")
     return this
   }
 
