@@ -78,6 +78,6 @@ export const Locators = {
     totalCell: "td:nth-of-type(5)",
     removeItem: "td:nth-of-type(6) a",
     totalCart: "tfoot td:nth-of-type(5)",
-    proceedToCheckout: "",
+    proceedToCheckout: '[data-test="proceed-1"]',
   },
 }
