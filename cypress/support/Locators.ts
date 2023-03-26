@@ -9,6 +9,8 @@ export const Locators = {
     rentals: '[data-test="nav-rentals"]',
     contact: '[data-test="nav-contact"]',
     signIn: '[data-test="nav-sign-in"]',
+    user: '[data-test="nav-user-menu"]',
+    signOut: '[data-test="nav-sign-out"]',
     cart: '[data-test="nav-cart"]',
     cartQuantity: '[data-test="cart-quantity"]',
   },
@@ -79,5 +81,30 @@ export const Locators = {
     removeItem: "td:nth-of-type(6) a",
     totalCart: "tfoot td:nth-of-type(5)",
     proceedToCheckout: '[data-test="proceed-1"]',
+  },
+
+  SingIn: {
+    username: '[data-test="email"]',
+    password: '[data-test="password"]',
+    login: '[data-test="login-submit"]',
+    loginConfirmation: ".login-form-1 > p",
+    proceedToCheckout: '[data-test="proceed-2"]',
+  },
+
+  Address: {
+    address: '[data-test="address"]',
+    city: '[data-test="city"]',
+    state: '[data-test="state"]',
+    country: '[data-test="country"]',
+    postcode: '[data-test="postcode"]',
+    proceedToCheckout: '[data-test="proceed-3"]',
+  },
+
+  Payment: {
+    paymentMethod: '[data-test="payment-method"]',
+    accountName: '[data-test="account-name"]',
+    accountNumber: '[data-test="account-number"]',
+    confirm: '[data-test="finish"]',
+    confirmationMessage: ".alert.alert-success",
   },
 }
