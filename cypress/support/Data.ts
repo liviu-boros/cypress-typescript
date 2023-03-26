@@ -1,4 +1,29 @@
 export const Data = {
+  Users: [
+    {
+      id: 2,
+      first_name: "Jane",
+      last_name: "Doe",
+      address: "Test street 98",
+      city: "Vienna",
+      state: "Vienna",
+      country: "Austria",
+      postcode: "TST T123",
+      phone: null,
+      dob: "1980-02-02",
+      email: "customer@practicesoftwaretesting.com",
+      created_at: null,
+      password: "welcome01",
+    },
+  ],
+  Payment: {
+    CashOnDelivery: {
+      option: "Cash on Delivery",
+      accountName: "Test Name",
+      accountNumber: "0987654345",
+    },
+    successMessage: "Payment was successful",
+  },
   SortOptions: {
     aToZ: "Name (A - Z)",
     zToA: "Name (Z - A)",
