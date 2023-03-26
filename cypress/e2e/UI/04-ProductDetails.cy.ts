@@ -1,7 +1,7 @@
 import { Data } from "@data"
 import ProductsGrid from "@components/ProductsGrid"
 import ProductDetails from "@components/ProductDetails"
-import { paginateProducts, selectRandom } from "@utilies"
+import { selectRandom } from "@utilies"
 import Header from "@components/Header"
 import Filters from "@components/Filters"
 
@@ -13,7 +13,7 @@ describe("Product Details", () => {
 
   it("First product details are displayed as expected", () => {
     // select first product from pre-defined list of products
-    const firstProduct = [...Data.Products][0]
+    const firstProduct = Data.Products[0]
     const { id, image, name, category, brand, price } = firstProduct
 
     // click on product name to navigate to the product details page

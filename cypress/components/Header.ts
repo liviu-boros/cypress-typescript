@@ -13,10 +13,6 @@ class Header {
     return cy.get(Locators.Header.categories)
   }
 
-  public contact(): Cypress.Chainable {
-    return cy.get(Locators.Header.contact)
-  }
-
   public handTools(): Cypress.Chainable {
     return cy.get(Locators.Header.handTools)
   }
@@ -33,8 +29,20 @@ class Header {
     return cy.get(Locators.Header.rentals)
   }
 
+  public contact(): Cypress.Chainable {
+    return cy.get(Locators.Header.contact)
+  }
+
   public singIn(): Cypress.Chainable {
     return cy.get(Locators.Header.signIn)
+  }
+
+  public user(): Cypress.Chainable {
+    return cy.get(Locators.Header.user)
+  }
+
+  public signOut(): Cypress.Chainable {
+    return cy.get(Locators.Header.signOut)
   }
 
   public cart(): Cypress.Chainable {

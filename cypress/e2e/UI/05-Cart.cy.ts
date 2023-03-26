@@ -21,7 +21,7 @@ describe("Cart", () => {
 
   it("Add first product to cart and verify cart", () => {
     // select first product from pre-defined list of products
-    const firstProduct = [...Data.Products][0]
+    const firstProduct = Data.Products[0]
 
     // click on product name to navigate to the product details page
     ProductsGrid.productCard(firstProduct.id).productName().click()
