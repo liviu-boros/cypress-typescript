@@ -92,7 +92,7 @@ describe("User sign in", () => {
   })
 })
 
-describe.only("User sign in - backend", () => {
+describe("User sign in - backend", () => {
   let helperCart
 
   beforeEach(() => {
