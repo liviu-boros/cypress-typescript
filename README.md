@@ -8,11 +8,11 @@ To install the Cypress shop project on your local machine, you will need to have
 
 1. Clone the repository:
 
-        git clone https://github.com/liviu-boros/cypress-shop-demo.git
+        git clone https://github.com/liviu-boros/cypress-typescript.git
 
 2. Navigate to the project directory:
 
-        cd cypress-shop-demo
+        cd cypress-typescript
 
 3. Install dependencies:
 
