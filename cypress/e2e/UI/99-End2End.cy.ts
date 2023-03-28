@@ -78,7 +78,7 @@ describe("End to end - UI login", () => {
   })
 })
 
-describe("End to end - backend login and stubbed user details", () => {
+describe.only("End to end - backend login and stubbed user details", () => {
   let helperCart
 
   beforeEach(() => {

@@ -1,4 +1,4 @@
-import { Locators } from "../support/Locators"
+import { Locators } from "@locators"
 
 class Header {
   public headerLogo(): Cypress.Chainable {

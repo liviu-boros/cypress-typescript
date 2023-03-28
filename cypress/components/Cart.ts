@@ -1,5 +1,5 @@
-import { HelperCart } from "../support/HelperCart"
-import { Locators } from "../support/Locators"
+import { HelperCart } from "@HelperCart"
+import { Locators } from "@locators"
 
 class Cart {
   private _anchor: Cypress.Chainable

@@ -1,4 +1,4 @@
-import { Locators } from "../support/Locators"
+import { Locators } from "@locators"
 
 class ProductsDetails {
   public image(): Cypress.Chainable {
@@ -37,7 +37,6 @@ class ProductsDetails {
     return cy.get(Locators.ProductDetails.addToFavorites)
   }
 
-  // facades
   public verifyProductDetailsFacade(
     image: string,
     name: string,

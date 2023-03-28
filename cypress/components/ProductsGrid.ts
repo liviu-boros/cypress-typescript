@@ -1,4 +1,4 @@
-import { Locators } from "../support/Locators"
+import { Locators } from "@locators"
 
 class ProductsGrid {
   private _anchor: Cypress.Chainable
@@ -40,7 +40,6 @@ class ProductsGrid {
     return cy.get(Locators.ProductsGrid.nextPage)
   }
 
-  // facades
   public verifyProductFacade(
     id: number,
     image: string,
